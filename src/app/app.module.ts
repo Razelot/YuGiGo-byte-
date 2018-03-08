@@ -18,7 +18,7 @@ import { AppComponent } from './app.component';
 import { CardsComponent } from './components/cards/cards.component';
 
 import { CardService } from './services/card.service';
-import { ThumbnailComponent } from './components/cards/thumbnail/thumbnail.component';
+import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
 
 const appRoutes: Routes = [
 
