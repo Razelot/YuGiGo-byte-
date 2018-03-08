@@ -1,0 +1,51 @@
+<div style="display: flex; flex-direction: column; height: 100%">
+  <mat-sidenav-container style="flex: 1;">
+    <mat-sidenav position="end" mode="side" opened>
+
+      <div style="height: 100%; width: 360px; background-color: #cccccc; box-sizing: border-box;">
+
+        <div style="display: flex; flex-direction: column;">
+          <img [src]="api.selected_image_path" width="360px" height="504px">
+
+          <div styl="flex: 1;">
+            <div>
+              <p style="font-weight: bold;">{{api.selected_card.name}}</p>
+            </div>
+            <div>
+              <p>{{api.selected_card.desc}}</p>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+      <mat-paginator [length]="length" [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" X (page)="onPageChange($event)">
+      </mat-paginator>
+      <mat-slider #cardSizeSlider min="1" max="100" step="1" value="1" thumbLabel></mat-slider>
+      <div style="height: 50px">
+
+        <!-- <button mat-icon-button (click)="onButtonClick()">
+          <i class="material-icons">add</i>
+        </button> -->
+
+      </div>
+      <mat-grid-list id="card-grid" [cols]="matGridOptions.cols" [rowHeight]="matGridOptions.rowHeight" style="flex: 1;">
+        <mat-grid-tile *ngFor="let card of cardsPaged">
+
+          <app-thumbnail [card]="card"></app-thumbnail>
+
+
+        </mat-grid-tile>
+      </mat-grid-list>
+
+
+
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+
+</div>
