@@ -4,9 +4,9 @@ const router = express.Router();
 const sqlite = require('sqlite3');
 const db = new sqlite.Database('./cards.cdb');
 
-const attribute = require('../definitions/attribute.json');
-const race = require('../definitions/race.json');
-const type = require('../definitions/type.json');
+const attribute = require('./attribute.json');
+const race = require('./race.json');
+const type = require('./type.json');
 
 // Format the card object
 function format_card(card) {

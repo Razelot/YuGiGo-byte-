@@ -2,8 +2,8 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 
-var index = require('./routes/index');
-var cards = require('./routes/cards');
+var index = require('./api/index');
+var cards = require('./api/cards');
 
 var port = process.env.PORT || 3000;
 
