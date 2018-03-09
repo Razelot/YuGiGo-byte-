@@ -25,6 +25,8 @@ export class CardsComponent implements OnInit {
 
   selectedCard: Card;
 
+  query: string;
+
   matGridOptions: { cols: number, rowHeight: string } = {
     cols: 10,
     rowHeight: '10:14',
@@ -81,6 +83,14 @@ export class CardsComponent implements OnInit {
     this.eventSubscription.unsubscribe();
   }
 
+  setCards() {
+    this.api.searchCards(this.query).subscribe(cards => {
+      this.cards = cards;
+      this.length = cards.length;
+      this.setPage();
+    });
+  }
+
   onCardSizeSliderChanged(value: any) {
 
     let minWidth = 50;
@@ -114,20 +124,16 @@ export class CardsComponent implements OnInit {
     this.cardsPaged = [];
     for (var i = 0; i < range[1] - range[0]; i++) {
       this.cardsPaged[i] = this.cards[range[0] + i];
-
-
-      // Get image paths for card
-      this.api.getCardApiary(this.cardsPaged[i].name).subscribe(res => {
-        if (res.status == "success") {
-          this.cardsPaged[i]['thumbnail_path'] = res.card.thumbnail_path;
-          this.cardsPaged[i]['image_path'] = res.card.image_path;
-        }
-      });
     }
   }
 
   onCardClick(card) {
     console.log(card);
+  }
+
+  onEnter(event){
+    this.setCards();
+    event.preventDefault();
   }
 
 }

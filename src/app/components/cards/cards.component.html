@@ -31,14 +31,25 @@
         </mat-toolbar-row>
 
         <mat-toolbar-row>
+
+          <form>
+            <mat-form-field>
+              <input matInput placeholder="Search cards" name="search" [(ngModel)]="query" (keydown.enter)="onEnter($event)">
+            </mat-form-field>
+          </form>
+
+        </mat-toolbar-row>
+
+
+        <mat-toolbar-row>
           <mat-slider #cardSizeSlider min="1" max="100" step="1" value="1" thumbLabel></mat-slider>
         </mat-toolbar-row>
       </mat-toolbar>
-
-
-      <!-- <div style="height: 50px">
+      <!-- 
+      <div style="height: 50px">
 
       </div> -->
+
 
 
       <mat-grid-list id="card-grid" [cols]="matGridOptions.cols" [rowHeight]="matGridOptions.rowHeight" style="flex: 1;">

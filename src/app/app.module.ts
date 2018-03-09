@@ -10,8 +10,10 @@ import { HttpClientModule } from '@angular/common/http';
 
 import {
   MatButtonModule, MatSidenavModule, MatToolbarModule, MatGridListModule,
-  MatSliderModule, MatPaginatorModule
+  MatSliderModule, MatPaginatorModule, MatFormFieldModule, MatInputModule
 } from '@angular/material';
+
+import { FormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
@@ -41,9 +43,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
 
     HttpClientModule,
+    FormsModule,
 
-
-    MatButtonModule, MatSidenavModule, MatToolbarModule, MatGridListModule, MatSliderModule, MatPaginatorModule,
+    MatButtonModule, MatSidenavModule, MatToolbarModule, MatGridListModule, MatSliderModule, MatPaginatorModule, MatInputModule, MatFormFieldModule,
 
 
 
