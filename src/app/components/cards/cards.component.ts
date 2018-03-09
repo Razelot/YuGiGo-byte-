@@ -122,7 +122,6 @@ export class CardsComponent implements OnInit {
   setPage() {
     var range = [(this.pageIndex) * this.pageSize, Math.min(this.length, (this.pageIndex + 1) * this.pageSize)];
     this.cardsPaged = [];
-    this.pageIndex = 0;
     for (var i = 0; i < range[1] - range[0]; i++) {
       this.cardsPaged[i] = this.cards[range[0] + i];
     }
@@ -134,6 +133,8 @@ export class CardsComponent implements OnInit {
 
   onEnter(event) {
     this.setCards();
+    this.pageIndex = 0;
+    this.setPage();
     event.preventDefault();
   }
 
