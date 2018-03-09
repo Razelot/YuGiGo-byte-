@@ -38,7 +38,7 @@ export class CardsComponent implements OnInit {
 
   pageIndex = 0;
   pageSize = 40;
-  pageSizeOptions = [5, 10, 20, 30, 40];
+  pageSizeOptions = [5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 
   // MatPaginator Output
   pageEvent: PageEvent;
@@ -131,7 +131,7 @@ export class CardsComponent implements OnInit {
     console.log(card);
   }
 
-  onEnter(event){
+  onEnter(event) {
     this.setCards();
     event.preventDefault();
   }

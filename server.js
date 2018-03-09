@@ -17,7 +17,7 @@ app.use('/',express.static(path.join(__dirname, 'dist')));
 // Api route
 app.use('/api', cards);
 
-// Cath all route
+// Catch all route
 app.use(function (req, res, next) {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
 })
