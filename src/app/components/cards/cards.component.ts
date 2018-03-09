@@ -87,6 +87,7 @@ export class CardsComponent implements OnInit {
     this.api.searchCards(this.query).subscribe(cards => {
       this.cards = cards;
       this.length = cards.length;
+      this.pageIndex = 0;
       this.setPage();
     });
   }
@@ -133,8 +134,6 @@ export class CardsComponent implements OnInit {
 
   onEnter(event) {
     this.setCards();
-    this.pageIndex = 0;
-    this.setPage();
     event.preventDefault();
   }
 
