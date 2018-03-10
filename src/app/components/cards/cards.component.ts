@@ -21,8 +21,8 @@ export class CardsComponent implements OnInit {
   // Card Filter and Search
   query: string;
 
-  attributes: boolean[] = new Array(6).fill(false);
-  races: boolean[] = new Array(26).fill(false);
+  attributes: boolean[];
+  races: boolean[;
 
   // UI Related
   cardWidth: number = 50;
@@ -46,6 +46,8 @@ export class CardsComponent implements OnInit {
   ngOnInit() {
 
     let self = this;
+
+    this.clearFilter();
 
     this.api.getCards().subscribe(cards => {
       this.cards = cards;
@@ -135,7 +137,7 @@ export class CardsComponent implements OnInit {
   }
 
   clearFilter() {
-    this.attributes = new Array(6).fill(false);
+    this.attributes = new Array(7).fill(false);
     this.races = new Array(26).fill(false);
   }
 

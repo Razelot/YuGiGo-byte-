@@ -1,3 +1,22 @@
 .checkbox {
     margin: 0 10px;
 }
+
+.button {
+    margin: 0 0 0 10px;
+}
+
+.button-row {
+    margin: 10px 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+.card-info{
+    padding: 0 15px 0 15px;
+}

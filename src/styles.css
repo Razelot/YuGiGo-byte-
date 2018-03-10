@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
-
+@import url('https://fonts.googleapis.com/css?family=Quattrocento');
+@import url('https://fonts.googleapis.com/css?family=Quattrocento+Sans');
 div.router-outlet {
     flex: 1;
     width: 100%;
@@ -15,4 +16,12 @@ div.router-outlet>* {
     flex-direction: column;
     height: 100%;
     width: 100%;
+}
+
+.card-name {
+    font-family: 'Quattrocento', serif;
+}
+
+.card-description {
+    font-family: 'Quattrocento Sans', sans-serif;
 }
