@@ -22,7 +22,7 @@ export class CardsComponent implements OnInit {
   query: string;
 
   attributes: boolean[];
-  races: boolean[;
+  races: boolean[];
 
   // UI Related
   cardWidth: number = 50;
