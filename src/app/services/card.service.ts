@@ -9,8 +9,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class CardService {
 
-  selected_card: Card = new Card();
-  selected_image_path: string;
+  selectedCard: Card = new Card();
+  selectedImagePath: string;
 
   constructor(private http: HttpClient) { }
 
@@ -18,16 +18,32 @@ export class CardService {
     return this.http.get<Card[]>('/api/cards/');
   }
 
-  searchCards(query) {
-    return this.http.get<Card[]>('/api/cards/' + query);
+  searchCards(query, filterAttributes, filterRaces) {
+
+
+    let params = query ? encodeURI(query) + "?" : "?";
+
+    if (filterAttributes.length > 0) {
+      params = params + "attributes=" + encodeURI(filterAttributes.toString()) + "&";
+    }
+
+    if (filterRaces.length > 0) {
+      params = params + "races=" + encodeURI(filterRaces.toString()) + "&";
+    }
+
+
+    return this.http.get<Card[]>('/api/cards/' + params);
   }
 
-  getCard(card_name) {
-    return this.http.get<Card>('/api/card/' + card_name);
+  // searchCards(query) {
+  //   return this.http.get<Card[]>('/api/cards/' + query);
+  // }
+
+  getCard(cardName) {
+    return this.http.get<Card>('/api/card/' + cardName);
   }
 
-  getCardApiary(card_name) {
-    return this.http.get<CardApiary>('https://www.ygohub.com/api/card_info?name=' + card_name);
+  getCardApiary(cardName) {
+    return this.http.get<CardApiary>('https://www.ygohub.com/api/card_info?name=' + cardName);
   }
-
 }

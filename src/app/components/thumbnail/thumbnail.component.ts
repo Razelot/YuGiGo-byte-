@@ -11,8 +11,8 @@ import { CardService } from '../../services/card.service';
 })
 export class ThumbnailComponent implements OnInit {
 
-  thumbnail_path: string = "";
-  image_path: string = "";
+  thumbnailPath: string = "";
+  imagePath: string = "";
 
   @Input() card: Card;
 
@@ -21,16 +21,16 @@ export class ThumbnailComponent implements OnInit {
   ngOnInit() {
     this.api.getCardApiary(this.card.name).subscribe(res => {
       if (res.status == "success") {
-        this.thumbnail_path = res.card.thumbnail_path;
-        this.image_path = res.card.image_path;
+        this.thumbnailPath = res.card.thumbnail_path;
+        this.imagePath = res.card.image_path;
       }
     });
   }
 
   onCardClick(selectedCard: Card) {
     this.api.getCard(this.card.name).subscribe(card => {
-      this.api.selected_card = card;
+      this.api.selectedCard = card;
     });
-    this.api.selected_image_path = this.image_path;
+    this.api.selectedImagePath = this.imagePath;
   }
 }

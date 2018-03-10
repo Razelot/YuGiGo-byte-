@@ -5,8 +5,6 @@ import { CardService } from '../../services/card.service';
 import { Subscription } from 'rxjs/Subscription';
 
 import { forEach } from '@angular/router/src/utils/collection';
-import { PageEvent } from '@angular/material';
-
 
 @Component({
   selector: 'app-cards',
@@ -15,54 +13,43 @@ import { PageEvent } from '@angular/material';
 })
 export class CardsComponent implements OnInit {
 
-  constructor(public api: CardService) { }
-
-  cardWidth: number = 50;
 
   cards: Card[] = [];
-
   cardsPaged: Card[] = [];
-
   selectedCard: Card;
 
+  // Card Filter and Search
   query: string;
 
+  attributes: boolean[] = new Array(6).fill(false);
+  races: boolean[] = new Array(26).fill(false);
+
+  // UI Related
+  cardWidth: number = 50;
   matGridOptions: { cols: number, rowHeight: string } = {
     cols: 10,
-    rowHeight: '10:14',
+    rowHeight: '10:15',
   };
 
 
-  // MatPaginator Inputs
-  length = 0;
-
+  // Paginator Inputs
+  cardCount = 0;
   pageIndex = 0;
   pageSize = 40;
-  pageSizeOptions = [5, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
-
-  // MatPaginator Output
-  pageEvent: PageEvent;
+  pageSizeOptions = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 
 
   @ViewChild('cardSizeSlider') cardSizeSlider: MatSlider;
 
-  eventSubscription: Subscription;
+  constructor(public api: CardService) { }
 
   ngOnInit() {
 
-
-
     let self = this;
-
-    // this.api.searchCards("Red-Eyes").subscribe(cards => {
-    //   this.cards = cards;
-    //   this.length = cards.length;
-    //   this.setPage();
-    // });
 
     this.api.getCards().subscribe(cards => {
       this.cards = cards;
-      this.length = cards.length;
+      this.cardCount = cards.length;
       this.setPage();
     });
 
@@ -75,18 +62,28 @@ export class CardsComponent implements OnInit {
       self.updateCardGridCols();
     }, true);
 
-
-
   }
 
-  ngOnDestroy() {
-    this.eventSubscription.unsubscribe();
-  }
+  searchCards() {
 
-  setCards() {
-    this.api.searchCards(this.query).subscribe(cards => {
+    // Check filtered attributes
+    let filterAttributes = [];
+    for (let i = 0; i < this.attributes.length; i++) {
+      if (this.attributes[i]) {
+        filterAttributes.push(this.DEFINE_ATTRIBUTE[i]);
+      }
+    }
+
+    let filterRaces = [];
+    for (let i = 0; i < this.races.length; i++) {
+      if (this.races[i]) {
+        filterRaces.push(this.DEFINE_RACE[i]);
+      }
+    }
+
+    this.api.searchCards(this.query, filterAttributes, filterRaces).subscribe(cards => {
       this.cards = cards;
-      this.length = cards.length;
+      this.cardCount = cards.length;
       this.pageIndex = 0;
       this.setPage();
     });
@@ -121,7 +118,7 @@ export class CardsComponent implements OnInit {
   }
 
   setPage() {
-    var range = [(this.pageIndex) * this.pageSize, Math.min(this.length, (this.pageIndex + 1) * this.pageSize)];
+    var range = [(this.pageIndex) * this.pageSize, Math.min(this.cardCount, (this.pageIndex + 1) * this.pageSize)];
     this.cardsPaged = [];
     for (var i = 0; i < range[1] - range[0]; i++) {
       this.cardsPaged[i] = this.cards[range[0] + i];
@@ -133,8 +130,20 @@ export class CardsComponent implements OnInit {
   }
 
   onEnter(event) {
-    this.setCards();
+    this.searchCards();
     event.preventDefault();
   }
+
+  clearFilter() {
+    this.attributes = new Array(6).fill(false);
+    this.races = new Array(26).fill(false);
+  }
+
+
+  DEFINE_ATTRIBUTE = ["EARTH", "WATER", "FIRE", "WIND", "LIGHT", "DARK", "DIVINE"];
+  DEFINE_RACE = ["Warrior", "Spellcaster", "Fairy", "Fiend", "Zombie", "Machine", "Aqua",
+    "Pyro", "Rock", "Winged Beast", "Plant", "Insect", "Thunder", "Dragon", "Beast", "Beast-Warrior",
+    "Dinosaur", "Fish", "Sea-Serpent", "Reptile", "Psychic", "Divine-Beast", "Creator God", "Wyrm",
+    "Cyberse", "Yokai"]
 
 }

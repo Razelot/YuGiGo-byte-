@@ -4,32 +4,44 @@ const router = express.Router();
 const sqlite = require('sqlite3');
 const db = new sqlite.Database('./cards.cdb');
 
-const attribute = require('./attribute.json');
-const race = require('./race.json');
-const type = require('./type.json');
+const decodeAttribute = require('./decode-attribute.json');
+const decodeRace = require('./decode-race.json');
+const decodeType = require('./decode-type.json');
+
+const encodeAttribute = require('./encode-attribute.json');
+const encodeRace = require('./encode-race.json');
+// const encode_type = require('./encode-type.json');
 
 // Format the card object
-function format_card(card) {
+function formatCard(card) {
 
     // Invalid card
     if (!card) { return; }
 
-    let card_obj = {};
-    card_obj['name'] = card['name'];
-    card_obj['attribute'] = attribute[card['attribute']];
-    card_obj['level'] = card['level'];
-    card_obj['race'] = race[card['race']];
-    card_obj['type'] = type[card['type']];
-    card_obj['atk'] = card['atk'];
-    card_obj['def'] = card['def'];
-    card_obj['desc'] = card['desc'];
+    let cardObj = {};
+    cardObj['name'] = card['name'];
+    cardObj['attribute'] = decodeAttribute[card['attribute']];
+    cardObj['level'] = parseInt(card['level'].toString(16).slice(-1), 16);
+    cardObj['race'] = decodeRace[card['race']];
+    cardObj['type'] = decodeType[card['type']];
+    cardObj['atk'] = card['atk'];
+    cardObj['def'] = card['def'];
+    cardObj['desc'] = card['desc'];
 
-    return card_obj
+    return cardObj
 }
 
 // Get All Cards
 router.get('/cards/', (req, res, next) => {
-    const sql = "select t.name, d.attribute, d.race, d.type, d.level, d.atk, d.def from datas d, texts t where d.id = t.id group by name";
+
+    const filterAtrributes = req.query.attributes ? " and " + createFilterQuery("attribute", req.query['attributes'].split(','), encodeAttribute) : "";
+    const filterRaces = req.query.races ? " and " + createFilterQuery("race", req.query['races'].split(','), encodeRace) : "";
+    // const filterLevel = req.query.level ? " and levels==" + req.query.level : "";
+    // const filter_type = req.query.type ? (" and type==" + encode_type[req.query.type.toUpperCase()]) : "";
+
+
+    const sql = "select t.name, d.attribute, d.race, d.type, d.level, d.atk, d.def from datas d, texts t where d.id = t.id"
+        + filterAtrributes + filterRaces + " group by name";
 
     let cards = [];
 
@@ -38,8 +50,8 @@ router.get('/cards/', (req, res, next) => {
             attribute
             res.send(err.message);
         } else {
-            let card_obj = format_card(card);
-            cards.push(card_obj);
+            let cardObj = formatCard(card);
+            cards.push(cardObj);
         }
     }, (err) => { // Display after all cards formatted
         res.json(cards);
@@ -49,8 +61,15 @@ router.get('/cards/', (req, res, next) => {
 
 // Search by name or description
 router.get('/cards/:query', (req, res, next) => {
-    // const sql = "select * from texts where upper(name) like upper('%" + req.params.query + "%')";
-    const sql = "select t.name, d.attribute, d.race, d.type, d.level, d.atk, d.def from datas d, texts t where d.id = t.id and upper(t.name) like upper('%" + decodeURI(req.params.query) + "%') group by name";
+
+    const filterAtrributes = req.query.attributes ? " and " + createFilterQuery("attribute", req.query['attributes'].split(','), encodeAttribute) : "";
+    const filterRaces = req.query.races ? " and " + createFilterQuery("race", req.query['races'].split(','), encodeRace) : "";
+    // const filterLevel = req.query.level ? " and levels==" + req.query.level : "";
+    // const filter_type = req.query.type ? (" and type==" + encode_type[req.query.type.toUpperCase()]) : "";
+
+    const sql = "select t.name, d.attribute, d.race, d.type, d.level, d.atk, d.def from datas d, texts t where d.id = t.id and (upper(t.name) like upper('%"
+        + decodeURI(req.params.query) + "%') or  upper(t.desc) like upper('%" + decodeURI(req.params.query) + "%')) "
+        + filterAtrributes + filterRaces + " group by name";
 
     let cards = [];
 
@@ -59,8 +78,8 @@ router.get('/cards/:query', (req, res, next) => {
             attribute
             res.send(err.message);
         } else {
-            let card_obj = format_card(card);
-            cards.push(card_obj);
+            let cardObj = formatCard(card);
+            cards.push(cardObj);
         }
     }, (err) => { // Display after all cards formatted
         res.json(cards);
@@ -76,10 +95,27 @@ router.get('/card/:name', (req, res, next) => {
             res.send(err.message);
             return;
         } else {
-            let card_obj = format_card(card);
-            res.json(card_obj);
+            let cardObj = formatCard(card);
+            res.json(cardObj);
         }
     });
 });
+
+
+function createFilterQuery(field, filters, encoder) {
+    let query = "(";
+    for (var i = 0; i < filters.length; i++) {
+        if (i != 0) {
+            query = query + " or ";
+        }
+        if (encoder) {
+            query = query + field + "==" + encoder[filters[i].toLowerCase()] + "";
+        } else {
+            query = query + field + "==" + filters[i] + "";
+        }
+    }
+    query = query + ")"
+    return query;
+}
 
 module.exports = router;

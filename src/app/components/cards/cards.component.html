@@ -5,14 +5,14 @@
       <div style="height: 100%; width: 360px; background-color: #cccccc; box-sizing: border-box;">
 
         <div style="display: flex; flex-direction: column;">
-          <img [src]="api.selected_image_path" width="360px" height="504px">
+          <img [src]="api.selectedImagePath" width="360px" height="504px">
 
           <div styl="flex: 1;">
             <div>
-              <p style="font-weight: bold;">{{api.selected_card.name}}</p>
+              <p style="font-weight: bold;">{{api.selectedCard.name}}</p>
             </div>
             <div>
-              <p>{{api.selected_card.desc}}</p>
+              <p>{{api.selectedCard.desc}}</p>
             </div>
           </div>
         </div>
@@ -24,27 +24,71 @@
     <mat-sidenav-content>
 
 
-      <mat-toolbar>
-        <mat-toolbar-row>
-          <mat-paginator [length]="length" [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" X (page)="onPageChange($event)">
-          </mat-paginator>
-        </mat-toolbar-row>
-
-        <mat-toolbar-row>
-
-          <form>
-            <mat-form-field>
-              <input matInput placeholder="Search cards" name="search" [(ngModel)]="query" (keydown.enter)="onEnter($event)">
-            </mat-form-field>
-          </form>
-
-        </mat-toolbar-row>
+      <mat-paginator [length]="cardCount" [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" X (page)="onPageChange($event)">
+      </mat-paginator>
 
 
-        <mat-toolbar-row>
+      <mat-card>
+        <mat-card-content>
           <mat-slider #cardSizeSlider min="1" max="100" step="1" value="1" thumbLabel></mat-slider>
-        </mat-toolbar-row>
-      </mat-toolbar>
+
+          <input matInput placeholder="Search cards" name="search" [(ngModel)]="query" (keydown.enter)="onEnter($event)">
+          <button mat-raised-button color="primary" (click)="searchCards()">Search</button>
+
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card>
+        <mat-card-content>
+
+          <h4>Atrributes</h4>
+          <section>
+            <mat-checkbox class="checkbox" [(ngModel)]="attributes[0]">EARTH</mat-checkbox>
+            <mat-checkbox class="checkbox" [(ngModel)]="attributes[1]">WATER</mat-checkbox>
+            <mat-checkbox class="checkbox" [(ngModel)]="attributes[2]">FIRE</mat-checkbox>
+            <mat-checkbox class="checkbox" [(ngModel)]="attributes[3]">WIND</mat-checkbox>
+            <mat-checkbox class="checkbox" [(ngModel)]="attributes[4]">LIGHT</mat-checkbox>
+            <mat-checkbox class="checkbox" [(ngModel)]="attributes[5]">DARK</mat-checkbox>
+          </section>
+
+          <h4>Races</h4>
+          <section>
+            <mat-checkbox class="checkbox" [(ngModel)]="races[0]">Warrior</mat-checkbox>
+            <mat-checkbox class="checkbox" [(ngModel)]="races[1]">Spellcaster</mat-checkbox>
+            <mat-checkbox class="checkbox" [(ngModel)]="races[2]">Fairy</mat-checkbox>
+            <mat-checkbox class="checkbox" [(ngModel)]="races[3]">Fiend</mat-checkbox>
+            <mat-checkbox class="checkbox" [(ngModel)]="races[4]">Zombie</mat-checkbox>
+            <mat-checkbox class="checkbox" [(ngModel)]="races[5]">Machine</mat-checkbox>
+            <mat-checkbox class="checkbox" [(ngModel)]="races[6]">Aqua</mat-checkbox>
+            <mat-checkbox class="checkbox" [(ngModel)]="races[7]">Pyro</mat-checkbox>
+            <mat-checkbox class="checkbox" [(ngModel)]="races[8]">Rock</mat-checkbox>
+            <mat-checkbox class="checkbox" [(ngModel)]="races[9]">Winged Beast</mat-checkbox>
+            <mat-checkbox class="checkbox" [(ngModel)]="races[10]">Plant</mat-checkbox>
+            <mat-checkbox class="checkbox" [(ngModel)]="races[11]">Insect</mat-checkbox>
+            <mat-checkbox class="checkbox" [(ngModel)]="races[12]">Thunder</mat-checkbox>
+            <mat-checkbox class="checkbox" [(ngModel)]="races[13]">Dragon</mat-checkbox>
+            <mat-checkbox class="checkbox" [(ngModel)]="races[14]">Beast</mat-checkbox>
+            <mat-checkbox class="checkbox" [(ngModel)]="races[15]">Beast-Warrior</mat-checkbox>
+            <mat-checkbox class="checkbox" [(ngModel)]="races[16]">Dinosaur</mat-checkbox>
+            <mat-checkbox class="checkbox" [(ngModel)]="races[17]">Fish</mat-checkbox>
+            <mat-checkbox class="checkbox" [(ngModel)]="races[18]">Sea-Serpent</mat-checkbox>
+            <mat-checkbox class="checkbox" [(ngModel)]="races[19]">Reptile</mat-checkbox>
+            <mat-checkbox class="checkbox" [(ngModel)]="races[20]">Psychic</mat-checkbox>
+            <mat-checkbox class="checkbox" [(ngModel)]="races[21]">Divine-Beast</mat-checkbox>
+            <mat-checkbox class="checkbox" [(ngModel)]="races[22]">Creator God</mat-checkbox>
+            <mat-checkbox class="checkbox" [(ngModel)]="races[23]">Wyrm</mat-checkbox>
+            <mat-checkbox class="checkbox" [(ngModel)]="races[24]">Cyberse</mat-checkbox>
+            <mat-checkbox class="checkbox" [(ngModel)]="races[25]">Yokai</mat-checkbox>
+          </section>
+
+          <section>
+            <button mat-raised-button color="warn" (click)="clearFilter()">Clear</button>
+          </section>
+        </mat-card-content>
+      </mat-card>
+
+
+
       <!-- 
       <div style="height: 50px">
 
