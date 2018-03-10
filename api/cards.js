@@ -39,8 +39,7 @@ router.get('/cards/', (req, res, next) => {
     // const filterLevel = req.query.level ? " and levels==" + req.query.level : "";
     // const filter_type = req.query.type ? (" and type==" + encode_type[req.query.type.toUpperCase()]) : "";
 
-
-    const sql = "select t.name, d.attribute, d.race, d.type, d.level, d.atk, d.def from datas d, texts t where d.id = t.id"
+    const sql = "select t.name, d.attribute, d.race, d.type, d.level, d.atk, d.def, t.desc from datas d, texts t where d.id = t.id"
         + filterAtrributes + filterRaces + " group by name";
 
     let cards = [];
@@ -67,13 +66,14 @@ router.get('/cards/:query', (req, res, next) => {
     // const filterLevel = req.query.level ? " and levels==" + req.query.level : "";
     // const filter_type = req.query.type ? (" and type==" + encode_type[req.query.type.toUpperCase()]) : "";
 
-    const sql = "select t.name, d.attribute, d.race, d.type, d.level, d.atk, d.def from datas d, texts t where d.id = t.id and (upper(t.name) like upper('%"
-        + decodeURI(req.params.query) + "%') or  upper(t.desc) like upper('%" + decodeURI(req.params.query) + "%')) "
+    const sql = "select t.name, d.attribute, d.race, d.type, d.level, d.atk, d.def, t.desc from datas d, texts t where d.id = t.id and (upper(t.name) like upper($query) or upper(t.desc) like upper($query)) "
         + filterAtrributes + filterRaces + " group by name";
+
+    const params = { $query: '%' + decodeURI(req.params.query) + '%'}
 
     let cards = [];
 
-    db.each(sql, (err, card) => { // Format each card
+    db.each(sql, params, (err, card) => { // Format each card
         if (err) {
             attribute
             res.send(err.message);
@@ -88,9 +88,9 @@ router.get('/cards/:query', (req, res, next) => {
 
 // Get Single Card
 router.get('/card/:name', (req, res, next) => {
-    const sql = "select t.name, d.attribute, d.race, d.type, d.level, d.atk, d.def, t.desc from datas d, texts t where d.id = t.id and upper(t.name)='" + decodeURI(req.params.name).toUpperCase() + "'";
+    const sql = "select t.name, d.attribute, d.race, d.type, d.level, d.atk, d.def, t.desc from datas d, texts t where d.id = t.id and upper(t.name)=?";
 
-    db.get(sql, (err, card) => {
+    db.get(sql, decodeURI(req.params.name).toUpperCase(), (err, card) => {
         if (err) {
             res.send(err.message);
             return;
@@ -99,6 +99,7 @@ router.get('/card/:name', (req, res, next) => {
             res.json(cardObj);
         }
     });
+
 });
 
 

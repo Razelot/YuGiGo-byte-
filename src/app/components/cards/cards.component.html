@@ -1,6 +1,8 @@
 <div style="display: flex; flex-direction: column; height: 100%">
   <mat-sidenav-container style="flex: 1;">
-    <mat-sidenav position="end" mode="side" opened style="overflow: hidden;">
+    <!-- <mat-sidenav position="end" mode="side" opened style="overflow: hidden;"> -->
+          <mat-sidenav position="end" mode="side" opened>
+
 
       <div style="height: 100%; width: 360px; background-color: #cccccc; box-sizing: border-box;">
 
@@ -11,6 +13,7 @@
             <div>
               <p class="card-name" style="font-weight: bold;">{{api.selectedCard.name}}</p>
             </div>
+            <mat-divider></mat-divider>
             <div>
               <p class="card-description">{{api.selectedCard.desc}}</p>
             </div>

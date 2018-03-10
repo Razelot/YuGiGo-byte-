@@ -10,7 +10,7 @@ import 'rxjs/add/operator/map';
 export class CardService {
 
   selectedCard: Card = new Card();
-  selectedImagePath: string;
+  selectedImagePath: string = "assets/card-back.jpg";
 
   constructor(private http: HttpClient) { }
 
@@ -34,10 +34,6 @@ export class CardService {
 
     return this.http.get<Card[]>('/api/cards/' + params);
   }
-
-  // searchCards(query) {
-  //   return this.http.get<Card[]>('/api/cards/' + query);
-  // }
 
   getCard(cardName) {
     return this.http.get<Card>('/api/card/' + cardName);

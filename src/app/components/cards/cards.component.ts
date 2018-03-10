@@ -105,7 +105,7 @@ export class CardsComponent implements OnInit {
 
   updateCardGridCols() {
 
-    let cols = 0;
+    let cols = 1;
     cols = document.getElementById('card-grid').clientWidth / this.cardWidth;
 
     cols = Math.floor(cols);

@@ -1,14 +1,14 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\cygwin64\home\Ezar\.yarn\bin\yarn.js install sqlite3
+  C:\Program Files\nodejs\node.exe C:\Users\Ezar\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js install
 
 PATH: 
-  C:\cygwin64\home\Ezar\.yarn\bin;C:\cygwin64\home\Ezar\.config\yarn\global\node_modules\.bin;C:\cygwin64\usr\local\bin;C:\cygwin64\bin;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files\MATLAB\R2016b\runtime\win64;C:\Program Files\MATLAB\R2016b\bin;C:\Program Files (x86)\MiKTeX 2.9\miktex\bin;C:\Program Files (x86)\Heroku\bin;C:\Program Files (x86)\git\cmd;C:\Program Files\Git\cmd;C:\Program Files\PostgreSQL\pg96\bin;C:\Program Files (x86)\Skype\Phone;C:\Program Files\TortoiseSVN\bin;C:\Program Files\nodejs;C:\Users\Ezar\AppData\Local\Microsoft\WindowsApps;C:\Users\Ezar\AppData\Local\atom\bin;C:\Users\Ezar\AppData\Local\Programs\Python\Python35;C:\sqlite3;C:\Users\Ezar\AppData\Local\Microsoft\WindowsApps;C:\intelFPGA\16.1\modelsim_ase\win32aloem;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Program Files\Heroku\bin;C:\Users\Ezar\AppData\Roaming\npm;C:\Program Files\Java\jdk1.8.0_101\bin\;C:\Program Files (x86)\Heroku\ruby-2.1.7\bin\
+  C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\MATLAB\R2016b\runtime\win64;C:\Program Files\MATLAB\R2016b\bin;C:\Program Files (x86)\MiKTeX 2.9\miktex\bin\;C:\Program Files (x86)\Heroku\bin;C:\Program Files (x86)\git\cmd;C:\Program Files\Git\cmd;C:\Program Files\PostgreSQL\pg96\bin;C:\Program Files (x86)\Skype\Phone\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\nodejs\;C:\Users\Ezar\AppData\Local\Microsoft\WindowsApps;C:\Users\Ezar\AppData\Local\atom\bin;C:\Users\Ezar\AppData\Local\Programs\Python\Python35;C:\sqlite3;C:\Users\Ezar\AppData\Local\Microsoft\WindowsApps;;C:\intelFPGA\16.1\modelsim_ase\win32aloem;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Program Files\Heroku\bin;C:\Users\Ezar\AppData\Roaming\npm
 
 Yarn version: 
-  1.5.1
+  1.3.2
 
 Node version: 
-  8.10.0
+  9.8.0
 
 Platform: 
   win32 x64
@@ -7202,10 +7202,4 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.8.20.tgz#a218c48db09464b19ff6fc8f0d4bb5b1046e185d"
 
 Trace: 
-  Error: `install` has been replaced with `add` to add new dependencies. Run "yarn add sqlite3" instead.
-      at new MessageError (C:\cygwin64\home\Ezar\.yarn\lib\cli.js:186:110)
-      at Object.<anonymous> (C:\cygwin64\home\Ezar\.yarn\lib\cli.js:21987:13)
-      at Generator.next (<anonymous>)
-      at step (C:\cygwin64\home\Ezar\.yarn\lib\cli.js:98:30)
-      at C:\cygwin64\home\Ezar\.yarn\lib\cli.js:109:13
-      at <anonymous>
+  Error: EPERM: operation not permitted, unlink 'C:\Users\Ezar\Desktop\ggg\gigobyte\node_modules\sqlite3\lib\binding\node-v59-win32-x64\node_sqlite3.node'

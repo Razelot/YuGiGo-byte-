@@ -3,6 +3,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Card } from '../../models/card';
 import { CardService } from '../../services/card.service';
 
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-thumbnail',
@@ -11,26 +13,42 @@ import { CardService } from '../../services/card.service';
 })
 export class ThumbnailComponent implements OnInit {
 
-  thumbnailPath: string = "";
-  imagePath: string = "";
+  imagePath: string = "assets/card-back-lg.jpg";
+  thumbPath: string = "assets/card-back.jpg";
+
+  thumbLoad: HTMLImageElement = new Image();
+  imageLoad: HTMLImageElement = new Image();
+
 
   @Input() card: Card;
 
-  constructor(private api: CardService) { }
+  constructor(private api: CardService, private http: HttpClient) { }
 
   ngOnInit() {
     this.api.getCardApiary(this.card.name).subscribe(res => {
       if (res.status == "success") {
-        this.thumbnailPath = res.card.thumbnail_path;
+        // this.thumbnailPath = res.card.thumbnail_path;
+        // this.imagePath = res.card.image_path;
+
         this.imagePath = res.card.image_path;
+        this.thumbLoad.src = res.card.thumbnail_path;
+
+        this.thumbLoad.onload = () => {
+          this.thumbPath = this.thumbLoad.src;
+        }
       }
     });
   }
 
   onCardClick(selectedCard: Card) {
-    this.api.getCard(this.card.name).subscribe(card => {
-      this.api.selectedCard = card;
-    });
-    this.api.selectedImagePath = this.imagePath;
+    // this.api.getCard(this.card.name).subscribe(card => {
+    //   this.api.selectedCard = card;
+    // });
+    this.api.selectedCard = this.card;
+    this.api.selectedImagePath = this.thumbLoad.src;
+    this.imageLoad.src = this.imagePath;
+    this.imageLoad.onload = () => {
+      this.api.selectedImagePath = this.imageLoad.src;
+    }
   }
 }
