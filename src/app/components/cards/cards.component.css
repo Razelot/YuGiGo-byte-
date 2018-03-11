@@ -13,18 +13,34 @@
     justify-content: flex-end;
 }
 
-.example-full-width {
-    width: 100%;
-}
-
 #card-grid {
-    height: calc(100% - 157px);
+    height: calc(100% - 150px);
+    /* padding: 0 10px 0 10px; */
 }
 
 #card-grid>div {
-    padding: 10px 10px 0 10px;
+    padding: 10px 0 10px 0;
     height: 100%;
     width: 100%;
     position: relative;
     overflow: auto;
+}
+
+#tabs {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    /* Height of the footer */
+    background: #6cf;
+}
+
+#tabs {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
 }

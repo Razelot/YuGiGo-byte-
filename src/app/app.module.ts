@@ -11,7 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {
   MatButtonModule, MatSidenavModule, MatToolbarModule, MatGridListModule,
   MatSliderModule, MatPaginatorModule, MatFormFieldModule, MatInputModule,
-  MatCheckboxModule, MatCardModule, MatExpansionModule, MatDividerModule
+  MatCheckboxModule, MatCardModule, MatExpansionModule, MatDividerModule, MatTabsModule
 } from '@angular/material';
 
 import { FormsModule } from '@angular/forms';
@@ -49,7 +49,7 @@ const appRoutes: Routes = [
     FormsModule,
 
     MatButtonModule, MatSidenavModule, MatToolbarModule, MatGridListModule, MatSliderModule, MatPaginatorModule, MatInputModule, MatFormFieldModule,
-    MatCheckboxModule, MatCardModule, MatExpansionModule, MatDividerModule,
+    MatCheckboxModule, MatCardModule, MatExpansionModule, MatDividerModule, MatTabsModule,
 
 
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })

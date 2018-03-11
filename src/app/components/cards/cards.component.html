@@ -62,12 +62,12 @@
 
       </mat-expansion-panel>
 
-      <mat-card>
+      <mat-card style="padding: 10px 20px 10px 20px;">
         <mat-card-content>
 
           <mat-grid-list cols="12" rowHeight="30px">
             <mat-grid-tile [colspan]="10" [rowspan]="1">
-              <mat-form-field class="example-full-width">
+              <mat-form-field style="width: 100%;">
                 <input matInput placeholder="Search cards" name="search" [(ngModel)]="query" (keydown.enter)="onEnter($event)" autocomplete="off">
               </mat-form-field>
             </mat-grid-tile>
@@ -81,8 +81,10 @@
             </mat-grid-tile>
 
             <mat-grid-tile [colspan]="10" [rowspan]="1">
-              <mat-paginator [length]="cardCount" [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" X (page)="onPageChange($event)">
-              </mat-paginator>
+              <span style="position: absolute; right: 0;">
+                <mat-paginator [length]="cardCount" [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" X (page)="onPageChange($event)">
+                </mat-paginator>
+              </span>
             </mat-grid-tile>
           </mat-grid-list>
 
@@ -96,7 +98,14 @@
         </mat-grid-tile>
       </mat-grid-list>
 
+
+      <!-- <mat-tab-group id="tabs">
+          <mat-tab label="Tab 1">Content 1</mat-tab>
+          <mat-tab label="Tab 2">Content 2</mat-tab>
+        </mat-tab-group> -->
+
     </mat-sidenav-content>
+
   </mat-sidenav-container>
 
 </div>
