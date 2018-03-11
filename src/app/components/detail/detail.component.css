@@ -1,6 +1,6 @@
 #card-info {
     padding: 0 15px 0 15px;
-    height: 300px;
+    height: calc(100%-530px);
     overflow: auto;
 }
 

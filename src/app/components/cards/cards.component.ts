@@ -19,6 +19,8 @@ export class CardsComponent implements OnInit {
   cardsPaged: Card[] = [];
   selectedCard: Card;
 
+  loading: boolean = true;
+
   // Card Filter and Search
   query: string;
 
@@ -68,6 +70,8 @@ export class CardsComponent implements OnInit {
   }
 
   searchCards() {
+
+    this.loading = true;
 
     // Check filtered attributes
     let filterAttributes = [];
@@ -126,6 +130,7 @@ export class CardsComponent implements OnInit {
     for (var i = 0; i < range[1] - range[0]; i++) {
       this.cardsPaged[i] = this.cards[range[0] + i];
     }
+    this.loading = false;
   }
 
   onCardClick(card) {

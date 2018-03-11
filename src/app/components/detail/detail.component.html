@@ -4,14 +4,14 @@
     <img [src]="api.selectedImagePath" width="360px" height="504px">
 
     <div id="card-info" style="flex: 1;">
-      <div>
-        <p id="card-name" style="font-weight: bold;">{{api.selectedCard.name}}</p>
+      <div id="card-name">
+        <p style="font-weight: bold;">{{api.selectedCard.name}}</p>
       </div>
       <mat-divider></mat-divider>
-      <div>
-        <p id="card-description">{{api.selectedCard.desc}}</p>
-      </div>
+      <div id="card-description">
+        <p>{{api.selectedCard.desc}}</p>
     </div>
   </div>
+</div>
 
 </div>

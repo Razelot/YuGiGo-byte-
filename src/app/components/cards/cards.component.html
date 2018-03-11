@@ -92,7 +92,11 @@
         </mat-card-content>
       </mat-card>
 
-      <mat-grid-list id="card-grid" [cols]="matGridOptions.cols" [rowHeight]="matGridOptions.rowHeight" style="flex: 1;">
+      <div *ngIf="loading" id="spinner">
+        <mat-spinner></mat-spinner>
+      </div>
+
+      <mat-grid-list *ngIf="!loading" id="card-grid" [cols]="matGridOptions.cols" [rowHeight]="matGridOptions.rowHeight" style="flex: 1;">
         <mat-grid-tile *ngFor="let card of cardsPaged">
           <app-thumbnail [card]="card"></app-thumbnail>
         </mat-grid-tile>
