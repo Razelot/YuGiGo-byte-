@@ -17,11 +17,3 @@ div.router-outlet>* {
     height: 100%;
     width: 100%;
 }
-
-.card-name {
-    font-family: 'Quattrocento', serif;
-}
-
-.card-description {
-    font-family: 'Quattrocento Sans', sans-serif;
-}

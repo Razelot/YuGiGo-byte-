@@ -22,6 +22,7 @@ import { CardsComponent } from './components/cards/cards.component';
 
 import { CardService } from './services/card.service';
 import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
+import { DetailComponent } from './components/detail/detail.component';
 
 const appRoutes: Routes = [
 
@@ -36,7 +37,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     CardsComponent,
-    ThumbnailComponent
+    ThumbnailComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,

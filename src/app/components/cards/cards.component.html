@@ -1,29 +1,13 @@
 <div style="display: flex; flex-direction: column; height: 100%">
   <mat-sidenav-container style="flex: 1;">
     <!-- <mat-sidenav position="end" mode="side" opened style="overflow: hidden;"> -->
-          <mat-sidenav position="end" mode="side" opened>
+    <mat-sidenav position="end" mode="side" opened style="overflow: hidden; background-color: #cccccc;">
 
+      <app-detail></app-detail>
 
-      <div style="height: 100%; width: 360px; background-color: #cccccc; box-sizing: border-box;">
-
-        <div style="display: flex; flex-direction: column;">
-          <img [src]="api.selectedImagePath" width="360px" height="504px">
-
-          <div class="card-info" style="flex: 1;">
-            <div>
-              <p class="card-name" style="font-weight: bold;">{{api.selectedCard.name}}</p>
-            </div>
-            <mat-divider></mat-divider>
-            <div>
-              <p class="card-description">{{api.selectedCard.desc}}</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
     </mat-sidenav>
 
-    <mat-sidenav-content>
+    <mat-sidenav-content style="overflow: hidden;">
 
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -92,11 +76,11 @@
               <button class="button" mat-raised-button color="primary" (click)="searchCards()">Search</button>
             </mat-grid-tile>
 
-            <mat-grid-tile [colspan]="6" [rowspan]="1">
+            <mat-grid-tile [colspan]="2" [rowspan]="1">
               <mat-slider #cardSizeSlider min="1" max="100" step="1" value="1" style="width:100%;"></mat-slider>
             </mat-grid-tile>
 
-            <mat-grid-tile [colspan]="6" [rowspan]="1">
+            <mat-grid-tile [colspan]="10" [rowspan]="1">
               <mat-paginator [length]="cardCount" [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" X (page)="onPageChange($event)">
               </mat-paginator>
             </mat-grid-tile>
@@ -111,21 +95,6 @@
           <app-thumbnail [card]="card"></app-thumbnail>
         </mat-grid-tile>
       </mat-grid-list>
-
-      <mat-card>
-        <mat-card-content>
-          <mat-grid-list cols="12" rowHeight="30px">
-
-            <mat-grid-tile [colspan]="6" [rowspan]="1">
-            </mat-grid-tile>
-
-            <mat-grid-tile [colspan]="6" [rowspan]="1">
-              <mat-paginator [length]="cardCount" [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" X (page)="onPageChange($event)">
-              </mat-paginator>
-            </mat-grid-tile>
-          </mat-grid-list>
-        </mat-card-content>
-      </mat-card>
 
     </mat-sidenav-content>
   </mat-sidenav-container>

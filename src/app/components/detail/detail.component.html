@@ -1,0 +1,17 @@
+<div style="height: 100%; width: 360px; box-sizing: border-box;">
+
+  <div style="display: flex; flex-direction: column;">
+    <img [src]="api.selectedImagePath" width="360px" height="504px">
+
+    <div id="card-info" style="flex: 1;">
+      <div>
+        <p id="card-name" style="font-weight: bold;">{{api.selectedCard.name}}</p>
+      </div>
+      <mat-divider></mat-divider>
+      <div>
+        <p id="card-description">{{api.selectedCard.desc}}</p>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatSlider } from '@angular/material';
 import { Card } from '../../models/card';
 import { CardService } from '../../services/card.service';
@@ -9,7 +9,8 @@ import { forEach } from '@angular/router/src/utils/collection';
 @Component({
   selector: 'app-cards',
   templateUrl: './cards.component.html',
-  styleUrls: ['./cards.component.css']
+  styleUrls: ['./cards.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class CardsComponent implements OnInit {
 

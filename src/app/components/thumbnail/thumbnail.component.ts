@@ -41,14 +41,17 @@ export class ThumbnailComponent implements OnInit {
   }
 
   onCardClick(selectedCard: Card) {
-    // this.api.getCard(this.card.name).subscribe(card => {
-    //   this.api.selectedCard = card;
-    // });
+    this.api.getCard(this.card.name).subscribe(card => {
+      this.api.selectedCard = card;
+    });
     this.api.selectedCard = this.card;
     this.api.selectedImagePath = this.thumbLoad.src;
     this.imageLoad.src = this.imagePath;
     this.imageLoad.onload = () => {
-      this.api.selectedImagePath = this.imageLoad.src;
+      // Check if still on same card
+      if (this.api.selectedCard.name == selectedCard.name){
+        this.api.selectedImagePath = this.imageLoad.src;
+      }
     }
   }
 }
