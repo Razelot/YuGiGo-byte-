@@ -39,10 +39,10 @@ router.get('/cards/', (req, res, next) => {
     // const filterLevel = req.query.level ? " and levels==" + req.query.level : "";
     // const filter_type = req.query.type ? (" and type==" + encode_type[req.query.type.toUpperCase()]) : "";
 
-    // const sql = "select t.name, d.attribute, d.race, d.type, d.level, d.atk, d.def, t.desc from datas d, texts t where d.id = t.id"
-    //     + filterAtrributes + filterRaces + " group by name";
-    const sql = "select t.name from datas d, texts t where d.id = t.id"
+    const sql = "select t.name, d.attribute, d.race, d.type, d.level, d.atk, d.def, t.desc from datas d, texts t where d.id = t.id"
         + filterAtrributes + filterRaces + " group by name";
+    // const sql = "select t.name from datas d, texts t where d.id = t.id"
+    //     + filterAtrributes + filterRaces + " group by name";
 
     let cards = [];
 
@@ -68,10 +68,10 @@ router.get('/cards/:query', (req, res, next) => {
     // const filterLevel = req.query.level ? " and levels==" + req.query.level : "";
     // const filter_type = req.query.type ? (" and type==" + encode_type[req.query.type.toUpperCase()]) : "";
 
-    // const sql = "select t.name, d.attribute, d.race, d.type, d.level, d.atk, d.def, t.desc from datas d, texts t where d.id = t.id and (upper(t.name) like upper($query) or upper(t.desc) like upper($query)) "
-    //     + filterAtrributes + filterRaces + " group by name";
-    const sql = "select t.name from datas d, texts t where d.id = t.id and (upper(t.name) like upper($query) or upper(t.desc) like upper($query)) "
+    const sql = "select t.name, d.attribute, d.race, d.type, d.level, d.atk, d.def, t.desc from datas d, texts t where d.id = t.id and (upper(t.name) like upper($query) or upper(t.desc) like upper($query)) "
         + filterAtrributes + filterRaces + " group by name";
+    // const sql = "select t.name from datas d, texts t where d.id = t.id and (upper(t.name) like upper($query) or upper(t.desc) like upper($query)) "
+    //     + filterAtrributes + filterRaces + " group by name";
 
     const params = { $query: '%' + decodeURI(req.params.query) + '%' }
 

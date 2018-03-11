@@ -28,9 +28,9 @@ export class CardsComponent implements OnInit {
   races: boolean[];
 
   // UI Related
-  cardWidth: number = 50;
+  cardWidth: number = 100;
   matGridOptions: { cols: number, rowHeight: string } = {
-    cols: 10,
+    cols: 8,
     rowHeight: '10:15',
   };
 
@@ -59,9 +59,9 @@ export class CardsComponent implements OnInit {
     });
 
 
-    this.cardSizeSlider.registerOnChange((value) => {
-      this.onCardSizeSliderChanged(value);
-    });
+    // this.cardSizeSlider.registerOnChange((value) => {
+    //   this.onCardSizeSliderChanged(value);
+    // });
 
     window.addEventListener('resize', function () {
       self.updateCardGridCols();
@@ -109,7 +109,6 @@ export class CardsComponent implements OnInit {
   }
 
   updateCardGridCols() {
-
     let cols = 1;
     cols = document.getElementById('card-grid').clientWidth / this.cardWidth;
 

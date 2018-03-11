@@ -73,14 +73,14 @@
             </mat-grid-tile>
 
             <mat-grid-tile [colspan]="2" [rowspan]="1">
-              <button class="button" mat-raised-button color="primary" (click)="searchCards()">Search</button>
+              <button class="button" mat-raised-button color="primary" (click)="searchCards()" style="width: 80%; position: absolute; right: 0;">Search</button>
             </mat-grid-tile>
 
-            <mat-grid-tile [colspan]="2" [rowspan]="1">
+            <!-- <mat-grid-tile [colspan]="2" [rowspan]="1">
               <mat-slider #cardSizeSlider min="1" max="100" step="1" value="1" style="width:100%;"></mat-slider>
-            </mat-grid-tile>
+            </mat-grid-tile> -->
 
-            <mat-grid-tile [colspan]="10" [rowspan]="1">
+            <mat-grid-tile [colspan]="12" [rowspan]="1">
               <span style="position: absolute; right: 0;">
                 <mat-paginator [length]="cardCount" [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" X (page)="onPageChange($event)">
                 </mat-paginator>
