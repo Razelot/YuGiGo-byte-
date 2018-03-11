@@ -59,9 +59,10 @@ export class CardsComponent implements OnInit {
     });
 
 
-    // this.cardSizeSlider.registerOnChange((value) => {
-    //   this.onCardSizeSliderChanged(value);
-    // });
+    this.cardSizeSlider.registerOnChange((value) => {
+      this.onCardSizeSliderChanged(value);
+    });
+
 
     window.addEventListener('resize', function () {
       self.updateCardGridCols();

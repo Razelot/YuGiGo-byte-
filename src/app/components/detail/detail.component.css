@@ -1,13 +1,22 @@
 #card-info {
-    padding: 0 15px 0 15px;
+    padding: 0 10px 0 10px;
     height: calc(100%-530px);
-    overflow: auto;
 }
 
 #card-name {
+    color: white;
     font-family: 'Quattrocento', serif;
 }
 
 #card-description {
     font-family: 'Quattrocento Sans', sans-serif;
+    background: rgb(204, 204, 204);
+    border: solid #a88f58;
+    padding: 5px;
+    height: 250px;
+    overflow: auto;
+}
+
+#card-description>p {
+    margin: 0;
 }
