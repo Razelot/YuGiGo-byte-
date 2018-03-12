@@ -43,7 +43,7 @@ router.get('/cards/', (req, res, next) => {
     // const sql = "select t.name, d.attribute, d.race, d.type, d.level, d.atk, d.def, t.desc from datas d, texts t where d.id = t.id"
     //     + filterAtrributes + filterRaces + " group by name";
     const sql = "select t.id, t.name from datas d, texts t where d.id = t.id"
-        + filterAtrributes + filterRaces + " group by name";
+        + filterAtrributes + filterRaces + " group by name order by random()";
 
     let cards = [];
 
