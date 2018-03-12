@@ -19,6 +19,7 @@ function formatCard(card) {
     if (!card) { return; }
 
     let cardObj = {};
+    cardObj['id'] = card['id'];
     cardObj['name'] = card['name'];
     cardObj['attribute'] = decodeAttribute[card['attribute']];
     if (card['level']) { cardObj['level'] = parseInt(card['level'].toString(16).slice(-1), 16); }
@@ -41,7 +42,7 @@ router.get('/cards/', (req, res, next) => {
 
     // const sql = "select t.name, d.attribute, d.race, d.type, d.level, d.atk, d.def, t.desc from datas d, texts t where d.id = t.id"
     //     + filterAtrributes + filterRaces + " group by name";
-    const sql = "select t.name from datas d, texts t where d.id = t.id"
+    const sql = "select t.id, t.name from datas d, texts t where d.id = t.id"
         + filterAtrributes + filterRaces + " group by name";
 
     let cards = [];
@@ -70,7 +71,7 @@ router.get('/cards/:query', (req, res, next) => {
 
     // const sql = "select t.name, d.attribute, d.race, d.type, d.level, d.atk, d.def, t.desc from datas d, texts t where d.id = t.id and (upper(t.name) like upper($query) or upper(t.desc) like upper($query)) "
     //     + filterAtrributes + filterRaces + " group by name";
-    const sql = "select t.name from datas d, texts t where d.id = t.id and (upper(t.name) like upper($query) or upper(t.desc) like upper($query)) "
+    const sql = "select t.id, t.name from datas d, texts t where d.id = t.id and (upper(t.name) like upper($query) or upper(t.desc) like upper($query)) "
         + filterAtrributes + filterRaces + " group by name";
 
     const params = { $query: '%' + decodeURI(req.params.query) + '%' }
@@ -92,7 +93,7 @@ router.get('/cards/:query', (req, res, next) => {
 
 // Get Single Card
 router.get('/card/:name', (req, res, next) => {
-    const sql = "select t.name, d.attribute, d.race, d.type, d.level, d.atk, d.def, t.desc from datas d, texts t where d.id = t.id and upper(t.name)=?";
+    const sql = "select t.id, t.name, d.attribute, d.race, d.type, d.level, d.atk, d.def, t.desc from datas d, texts t where d.id = t.id and upper(t.name)=?";
 
     db.get(sql, decodeURI(req.params.name).toUpperCase(), (err, card) => {
         if (err) {

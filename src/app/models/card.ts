@@ -1,4 +1,5 @@
 export class Card {
+    "id": number;
     "name": string;
     "attribute": string;
     "level": number;
