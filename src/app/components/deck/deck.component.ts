@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
+import { MatSlider } from '@angular/material';
 import { NavigationService } from '../../services/navigation.service';
 
 import { Card } from '../../models/card';
@@ -17,13 +18,7 @@ export class DeckComponent implements OnInit {
   cardsTrap: Card[];
   cardsExtra: Card[];
 
-  // UI Related
-  cardWidth: number = 100;
-  matGridOptions: { cols: number, rowHeight: string } = {
-    cols: 8,
-    rowHeight: '10:15',
-  };
-
+  @ViewChild('cardSizeSlider') cardSizeSlider: MatSlider;
 
   constructor(public api: CardService, public navi: NavigationService) { }
 
@@ -72,6 +67,10 @@ export class DeckComponent implements OnInit {
 
       });
 
+    });
+
+    this.cardSizeSlider.registerOnChange((value) => {
+      this.navi.onCardSizeSliderChanged(value);
     });
   }
 

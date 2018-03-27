@@ -71,7 +71,8 @@
 
       <mat-grid-tile [colspan]="10" [rowspan]="1">
         <span style="position: absolute; right: 0;">
-          <mat-paginator [length]="api.cardCount" [pageIndex]="api.pageIndex" [pageSize]="api.pageSize" [pageSizeOptions]="api.pageSizeOptions" X (page)="onPageChange($event)">
+          <mat-paginator [length]="api.cardCount" [pageIndex]="api.pageIndex" [pageSize]="api.pageSize" [pageSizeOptions]="api.pageSizeOptions"
+            X (page)="onPageChange($event)">
           </mat-paginator>
         </span>
       </mat-grid-tile>
@@ -81,7 +82,12 @@
   </mat-card-content>
 </mat-card>
 
-<mat-grid-list *ngIf="!api.loading" class="card-grid" [cols]="matGridOptions.cols" [rowHeight]="matGridOptions.rowHeight" style="flex: 1;">
+<div *ngIf="api.loading" id="spinner">
+  <mat-spinner></mat-spinner>
+</div>
+
+
+<mat-grid-list *ngIf="!api.loading" id="card-grid-main" class="card-grid grid-trunk" [cols]="navi.matGridOptions.cols" [rowHeight]="navi.matGridOptions.rowHeight">
   <mat-grid-tile *ngFor="let card of api.cardsPaged">
     <app-thumbnail [card]="card" style="height: 100%; width: 100%;"></app-thumbnail>
   </mat-grid-tile>

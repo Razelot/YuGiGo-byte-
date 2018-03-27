@@ -19,6 +19,14 @@ export class CardsComponent implements OnInit {
 
   constructor(public api: CardService, public navi: NavigationService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+
+    var self = this;
+
+    window.addEventListener('resize', () => {
+      self.navi.updateCardGridCols();
+    }, true);
+
+   }
 
 }

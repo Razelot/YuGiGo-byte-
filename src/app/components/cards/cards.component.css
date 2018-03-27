@@ -9,8 +9,23 @@
     height: calc(100% - 150px);
 }
 
-.card-grid {
+mat-grid-list.card-grid {
+    flex: 1;
+    padding: 0 !important;
+}
+
+#card-grid-main.grid-trunk {
     height: calc(100% - 150px);
+    /* padding: 0 10px 0 10px; */
+}
+
+#card-grid-main.grid-deck {
+    height: calc(100% - 300px);
+    /* padding: 0 10px 0 10px; */
+}
+
+#card-grid-extra {
+    height: 150px;
     /* padding: 0 10px 0 10px; */
 }
 

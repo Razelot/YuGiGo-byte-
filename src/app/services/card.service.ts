@@ -39,7 +39,6 @@ export class CardService {
       this.setPage();
     });
 
-
     // Removes any unused cards in the deck list
     this.deckCleaner();
   }
@@ -113,10 +112,6 @@ export class CardService {
     return this.af.list('deck').valueChanges().map(changes => {
       return changes.map(c => <Card>(c));
     });
-  }
-
-  test() {
-    return this.af.list('test').snapshotChanges();
   }
 
   deckCleaner() {
