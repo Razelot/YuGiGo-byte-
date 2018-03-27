@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const sqlite = require('sqlite3');
-const db = new sqlite.Database('./cards.cdb');
+const db = new sqlite.Database('./api/cards.cdb');
 
 const decodeAttribute = require('./decode-attribute.json');
 const decodeRace = require('./decode-race.json');
@@ -12,7 +12,7 @@ const encodeAttribute = require('./encode-attribute.json');
 const encodeRace = require('./encode-race.json');
 // const encode_type = require('./encode-type.json');
 
-// Format the card object
+// Format a card object
 function formatCard(card) {
 
     // Invalid card
@@ -47,19 +47,28 @@ router.get('/cards/', (req, res, next) => {
         // + order by random()"
         ;
 
-    let cards = [];
+    // let cards = [];
 
-    db.each(sql, (err, card) => { // Format each card
+    // db.each(sql, (err, card) => { // Format each card
+    //     if (err) {
+    //         attribute
+    //         res.send(err.message);
+    //     } else {
+    //         let cardObj = formatCard(card);
+    //         cards.push(cardObj);
+    //     }
+    // }, (err) => { // Display after all cards formatted
+    //     res.json(cards);
+    // });
+
+    db.all(sql, (err, cards) => {
         if (err) {
-            attribute
             res.send(err.message);
         } else {
-            let cardObj = formatCard(card);
-            cards.push(cardObj);
+            res.json(cards);
         }
-    }, (err) => { // Display after all cards formatted
-        res.json(cards);
     });
+
 
 });
 
@@ -78,26 +87,37 @@ router.get('/cards/:query', (req, res, next) => {
 
     const params = { $query: '%' + decodeURI(req.params.query) + '%' }
 
-    let cards = [];
+    // let cards = [];
 
-    db.each(sql, params, (err, card) => { // Format each card
+    // db.each(sql, params, (err, card) => { // Format each card
+    //     if (err) {
+    //         res.send(err.message);
+    //     } else {
+    //         let cardObj = formatCard(card);
+    //         cards.push(cardObj);
+    //     }
+    // }, (err) => { // Display after all cards formatted
+    //     res.json(cards);
+    // });
+
+
+    db.all(sql, params, (err, cards) => {
         if (err) {
-            attribute
             res.send(err.message);
         } else {
-            let cardObj = formatCard(card);
-            cards.push(cardObj);
+            res.json(cards);
         }
-    }, (err) => { // Display after all cards formatted
-        res.json(cards);
     });
+
 });
 
-// Get Single Card
-router.get('/card/:name', (req, res, next) => {
-    const sql = "select t.id, t.name, d.attribute, d.race, d.type, d.level, d.atk, d.def, t.desc from datas d, texts t where d.id = t.id and upper(t.name)=?";
+// Get Single Card by ID
+router.get('/card/:id', (req, res, next) => {
+    // const sql = "select t.id, t.name, d.attribute, d.race, d.type, d.level, d.atk, d.def, t.desc from datas d, texts t where d.id = t.id and upper(t.name)=?";
+    const sql = "select t.id, t.name, d.attribute, d.race, d.type, d.level, d.atk, d.def, t.desc from datas d, texts t where d.id = t.id and t.id=?";
 
-    db.get(sql, decodeURI(req.params.name).toUpperCase(), (err, card) => {
+
+    db.get(sql, req.params.id, (err, card) => {
         if (err) {
             res.send(err.message);
             return;

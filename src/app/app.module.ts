@@ -21,8 +21,26 @@ import { AppComponent } from './app.component';
 import { CardsComponent } from './components/cards/cards.component';
 
 import { CardService } from './services/card.service';
+import { NavigationService } from './services/navigation.service';
+
 import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
 import { DetailComponent } from './components/detail/detail.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { DeckComponent } from './components/deck/deck.component';
+import { TrunkComponent } from './components/trunk/trunk.component';
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyAnwGKZseQQflRPEWCgOWs-VXkpwdda31A",
+  authDomain: "gigo-byte.firebaseapp.com",
+  databaseURL: "https://gigo-byte.firebaseio.com",
+  projectId: "gigo-byte",
+  storageBucket: "gigo-byte.appspot.com",
+  messagingSenderId: "714692351263"
+};
+
 
 const appRoutes: Routes = [
 
@@ -38,13 +56,17 @@ const appRoutes: Routes = [
     AppComponent,
     CardsComponent,
     ThumbnailComponent,
-    DetailComponent
+    DetailComponent,
+    SidenavComponent,
+    DeckComponent,
+    TrunkComponent
   ],
   imports: [
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
-
     HttpClientModule,
     FormsModule,
 
@@ -54,7 +76,7 @@ const appRoutes: Routes = [
 
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [CardService],
+  providers: [CardService, NavigationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

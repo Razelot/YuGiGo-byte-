@@ -1,0 +1,18 @@
+<mat-grid-list *ngIf="!api.loading" class="card-grid" [cols]="matGridOptions.cols" [rowHeight]="matGridOptions.rowHeight" style="flex: 1;">
+  <mat-grid-tile *ngFor="let card of cardsMonster">
+    <app-thumbnail [card]="card" style="height: 100%; width: 100%;"></app-thumbnail>
+  </mat-grid-tile>
+  <mat-grid-tile *ngFor="let card of cardsSpell">
+    <app-thumbnail [card]="card" style="height: 100%; width: 100%;"></app-thumbnail>
+  </mat-grid-tile>
+  <mat-grid-tile *ngFor="let card of cardsTrap">
+    <app-thumbnail [card]="card" style="height: 100%; width: 100%;"></app-thumbnail>
+  </mat-grid-tile>
+</mat-grid-list>
+
+
+<mat-grid-list *ngIf="!api.loading" class="card-grid" [cols]="matGridOptions.cols" [rowHeight]="matGridOptions.rowHeight" style="flex: 1;">
+  <mat-grid-tile *ngFor="let card of cardsExtra">
+    <app-thumbnail [card]="card" style="height: 100%; width: 100%;"></app-thumbnail>
+  </mat-grid-tile>
+</mat-grid-list>
