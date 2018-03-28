@@ -16,12 +16,12 @@ import {
 
 import { FormsModule } from '@angular/forms';
 
-
 import { AppComponent } from './app.component';
 import { CardsComponent } from './components/cards/cards.component';
 
 import { CardService } from './services/card.service';
 import { NavigationService } from './services/navigation.service';
+import { EventService } from './services/event.service';
 
 import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
 import { DetailComponent } from './components/detail/detail.component';
@@ -76,7 +76,7 @@ const appRoutes: Routes = [
 
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [CardService, NavigationService],
+  providers: [CardService, NavigationService, EventService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

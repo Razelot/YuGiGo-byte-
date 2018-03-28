@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationService } from '../../services/navigation.service';
+import { EventService } from '../../services/event.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -8,16 +9,23 @@ import { NavigationService } from '../../services/navigation.service';
 })
 export class SidenavComponent implements OnInit {
 
-  constructor(public navi: NavigationService) { }
+  constructor(public navi: NavigationService, public eventService: EventService) { }
 
   ngOnInit() {
   }
 
+  toggleSideNav() {
+    this.eventService.emitChange(
+      {
+        'target': 'app-component',
+        'function': 'toggleSideNav'
+      }
+    );
+  }
 
-  foo(){
-    console.log('asda')
-
-    console.log(this.navi.view);
+  SetView(viewId: Number){
+    this.navi.setView(viewId);
+    this.toggleSideNav();
   }
 
 }

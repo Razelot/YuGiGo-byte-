@@ -1,6 +1,7 @@
 <div class="main-div">
   <mat-sidenav-container>
-    <mat-sidenav #sidenav mode="side">
+
+    <mat-sidenav #sidenav mode="over">
 
       <app-sidenav></app-sidenav>
 
@@ -8,12 +9,14 @@
 
     <mat-sidenav-content style="flex: 1; display: flex; flex-direction: column;">
       <div style="flex: 1; display: flex; flex-direction: column;">
-        <mat-toolbar style="height: 30px; background: #363636; color: white; border-bottom: 1px solid black;">
-          <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-toolbar style="background: #363636; color: white; border-bottom: 1px solid black;">
+          <button mat-icon-button (click)="toggleSideNav()">
             <i class="material-icons">menu</i>
           </button>
 
-          Gagagigo
+          <span style="margin: 0px 12px;">
+              Yu-gi-go Byte
+          </span>
 
         </mat-toolbar>
 

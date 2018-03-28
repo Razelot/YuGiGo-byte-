@@ -1,14 +1,20 @@
-<div class="main-div">
+<div class="main-div" style="width: 400px;">
   <div style="height: 200px; background-color: #FFDB58;">
+
+    <mat-toolbar style="background: transparent;">
+      <button mat-icon-button (click)="toggleSideNav()">
+        <i class="material-icons">arrow_back</i>
+      </button>
+    </mat-toolbar>
 
   </div>
 
   <div class="button-container" style="flex: 1;">
-    <button mat-button (click)="navi.setView(0)">
+    <button mat-button (click)="SetView(0)">
       <i class="material-icons">content_copy</i>
       <span>Trunk</span>
     </button>
-    <button mat-button (click)="navi.setView(1)">
+    <button mat-button (click)="SetView(1)">
       <i class="material-icons">crop_portrait</i>
       <span>Deck</span>
     </button>
