@@ -31,6 +31,8 @@ export class CardService {
   selectedCard: Card = new Card();
   selectedImagePath: string = "assets/card-back.jpg";
 
+  selectedDeck: string;
+
   constructor(private http: HttpClient, private af: AngularFireDatabase) {
 
     this.getCards().subscribe(cards => {
@@ -121,6 +123,12 @@ export class CardService {
           this.af.object('deck/' + card.id).remove();
         }
       });
+    });
+  }
+
+  getDecks() {
+    return this.af.list('decks').snapshotChanges().map(changes => {
+      return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
     });
   }
 }

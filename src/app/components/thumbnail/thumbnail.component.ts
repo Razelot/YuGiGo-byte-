@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { Card } from '../../models/card';
 import { CardService } from '../../services/card.service';
+import { NavigationService } from '../../services/navigation.service';
 
 import { HttpClient } from '@angular/common/http';
 
@@ -22,7 +23,7 @@ export class ThumbnailComponent implements OnInit {
 
   @Input() card: Card;
 
-  constructor(private api: CardService, private http: HttpClient) { }
+  constructor(private api: CardService, public navi: NavigationService, private http: HttpClient) { }
 
   ngOnInit() {
     // this.api.getCardApiary(this.card.name).subscribe(res => {
@@ -48,6 +49,7 @@ export class ThumbnailComponent implements OnInit {
   }
 
   onCardClick(selectedCard: Card) {
+    if(!this.navi.detail) this.navi.detail = true;
     this.api.selectedCard = this.card;
     this.api.getCard(this.card.id).subscribe(card => {
       // Check if still on same card

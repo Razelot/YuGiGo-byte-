@@ -4,20 +4,31 @@ import { Injectable } from '@angular/core';
 export class NavigationService {
 
   // 0 => trunk
-  // 1 => deck
+  // 1 => deck list
+  // 2 => deck
+
   view: number = 0;
 
   // UI Related
   cardWidth: number = 100;
+
+  detail: boolean = false;
+
   matGridOptions: { cols: number, rowHeight: string } = {
     cols: 8,
     rowHeight: '10:15',
   };
 
+  mobileQuery: MediaQueryList;
+
   constructor() { }
-  
-  setView(val){
+
+  setView(val) {
     this.view = val;
+  }
+
+  toggleDetail() {
+    this.detail = !this.detail;
   }
 
   onCardSizeSliderChanged(value: any) {
@@ -33,6 +44,7 @@ export class NavigationService {
   }
 
   updateCardGridCols() {
+    if (!document.getElementById('card-grid-main')) return;
     let cols = 1;
     cols = document.getElementById('card-grid-main').clientWidth / this.cardWidth;
 
@@ -40,6 +52,5 @@ export class NavigationService {
 
     this.matGridOptions.cols = cols;
   }
-
 
 }

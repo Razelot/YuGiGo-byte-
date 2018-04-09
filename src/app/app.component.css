@@ -9,11 +9,15 @@
 
 .main-div>mat-sidenav-container {
     position: relative;
-    height: 100%;
+    height: calc(100% - 64px); 
     width: 100%;
 }
 
-.sidenav {
+.mat-toolbar-row, .mat-toolbar-single-row {
+    height: 64px !important;
+}
+
+/* .sidenav {
     width: 360px;
     background-color: #363636;
-}
+} */

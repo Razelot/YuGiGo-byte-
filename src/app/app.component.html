@@ -1,30 +1,42 @@
 <div class="main-div">
-  <mat-sidenav-container>
+  <mat-toolbar style="background: #363636; color: white;">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <i class="material-icons">menu</i>
+    </button>
 
-    <mat-sidenav #sidenav mode="over">
+    <span style="margin: 0px 12px;">
+      Yu-gi-go Byte
+    </span>
+
+    <span *ngIf="navi.mobileQuery.matches" style="margin-left: auto;">
+      <button mat-icon-button (click)="navi.toggleDetail()">
+        <i *ngIf="navi.detail" class="material-icons">chevron_right</i>
+        <i *ngIf="!navi.detail" class="material-icons">chevron_left</i>
+
+      </button>
+    </span>
+
+  </mat-toolbar>
+  <mat-sidenav-container autosize>
+
+    <mat-sidenav #sidenav [mode]="navi.mobileQuery.matches ? 'over' : 'side'" [opened]="!navi.mobileQuery.matches">
 
       <app-sidenav></app-sidenav>
 
     </mat-sidenav>
 
-    <mat-sidenav-content style="flex: 1; display: flex; flex-direction: column;">
-      <div style="flex: 1; display: flex; flex-direction: column;">
-        <mat-toolbar style="background: #363636; color: white; border-bottom: 1px solid black;">
-          <button mat-icon-button (click)="toggleSideNav()">
-            <i class="material-icons">menu</i>
-          </button>
+    <!-- <mat-sidenav-content style="flex: 1; display: flex; flex-direction: column;"> -->
+    <mat-sidenav-content>
 
-          <span style="margin: 0px 12px;">
-              Yu-gi-go Byte
-          </span>
+      <!-- <div style="flex: 1; display: flex; flex-direction: column;"> -->
 
-        </mat-toolbar>
-
-        <div class="router-outlet">
-          <router-outlet style="height: 0px !important; width: 0px !important; flex: 0 !important"></router-outlet>
-        </div>
+      <div class="router-outlet">
+        <!-- <router-outlet style="height: 0px !important; width: 0px !important; flex: 0 !important"></router-outlet> -->
+        <router-outlet></router-outlet>
 
       </div>
+
+      <!-- </div> -->
     </mat-sidenav-content>
 
   </mat-sidenav-container>

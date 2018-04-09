@@ -1,20 +1,23 @@
-<div style="display: flex; flex-direction: column; height: 100%">
-  <mat-sidenav-container style="flex: 1;">
+<!-- <div style="display: flex; flex-direction: column; height: 100%"> -->
+  <mat-sidenav-container autosize>
     <!-- <mat-sidenav position="end" mode="side" opened style="overflow: hidden;"> -->
-    <mat-sidenav position="end" mode="side" opened style="width: 400px; overflow: hidden; background: #363636">
+    <mat-sidenav [mode]="navi.mobileQuery.matches ? 'over' : 'side'" [(opened)]="navi.detail" position="end" style="overflow: hidden; background: #363636">
+    <!-- <mat-sidenav position="end" mode="side" opened style="overflow: hidden; background: #363636"> -->
 
       <app-detail style="box-sizing: border-box;"></app-detail>
 
     </mat-sidenav>
-
-    <mat-sidenav-content style="overflow: hidden; background: rgb(204, 204, 204);">
+    
+    <mat-sidenav-content style="height: calc(100vh - 64px); overflow: hidden; background: rgb(204, 204, 204);">
 
       <app-trunk *ngIf="navi.view == 0"></app-trunk>
 
-      <app-deck *ngIf="navi.view == 1"></app-deck>
+      <app-deck-list *ngIf="navi.view == 1"></app-deck-list>
+
+      <app-deck *ngIf="navi.view == 2"></app-deck>
 
     </mat-sidenav-content>
 
   </mat-sidenav-container>
 
-</div>
+<!-- </div> -->

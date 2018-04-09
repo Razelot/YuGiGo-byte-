@@ -5,6 +5,8 @@ import { NavigationService } from '../../services/navigation.service';
 import { Card } from '../../models/card';
 import { CardService } from '../../services/card.service';
 
+import { Observable } from 'rxjs/Observable';
+
 
 @Component({
   selector: 'app-deck',
@@ -18,11 +20,14 @@ export class DeckComponent implements OnInit {
   cardsTrap: Card[];
   cardsExtra: Card[];
 
+  deckName: String;
+
   @ViewChild('cardSizeSlider') cardSizeSlider: MatSlider;
 
   constructor(public api: CardService, public navi: NavigationService) { }
 
   ngOnInit() {
+    
     this.api.getDeck().subscribe(deck => {
 
       this.cardsMonster = [];
@@ -72,6 +77,16 @@ export class DeckComponent implements OnInit {
     this.cardSizeSlider.registerOnChange((value) => {
       this.navi.onCardSizeSliderChanged(value);
     });
+  }
+
+  selectDeck(key){
+    this.api.selectedDeck = key;
+    console.log(key);
+  }
+
+  unselectDeck() {
+    this.api.selectedDeck = null;
+    this.navi.view = 1;
   }
 
 }

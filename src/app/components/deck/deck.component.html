@@ -1,7 +1,21 @@
 <mat-card style="padding: 10px 20px 10px 20px;">
   <mat-card-content>
 
+
     <mat-grid-list cols="12" rowHeight="30px">
+
+      <mat-grid-tile [colspan]="10" [rowspan]="1">
+        <mat-form-field style="width: 100%;">
+          <input matInput placeholder="Deck name" name="search" [(ngModel)]="deckName" (keydown.enter)="onEnter($event)" autocomplete="off">
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <button mat-icon-button (click)="unselectDeck()">
+          <i class="material-icons">close</i>
+        </button>
+      </mat-grid-tile>
+
 
       <mat-grid-tile [colspan]="2" [rowspan]="1">
         <mat-slider #cardSizeSlider min="1" max="100" step="1" value="1" style="width:100%;"></mat-slider>

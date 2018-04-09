@@ -31,6 +31,7 @@ import { TrunkComponent } from './components/trunk/trunk.component';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { DeckListComponent } from './components/deck-list/deck-list.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAnwGKZseQQflRPEWCgOWs-VXkpwdda31A",
@@ -46,7 +47,7 @@ const appRoutes: Routes = [
 
   { path: '', redirectTo: 'cards', pathMatch: 'full' },
   // { path: 'home', component: HomeComponent },
-  { path: 'cards', component: CardsComponent },
+  { path: 'cards/:stash', component: CardsComponent },
   // { path: 'deck', component: DeckComponent },
 ];
 
@@ -59,7 +60,8 @@ const appRoutes: Routes = [
     DetailComponent,
     SidenavComponent,
     DeckComponent,
-    TrunkComponent
+    TrunkComponent,
+    DeckListComponent
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),

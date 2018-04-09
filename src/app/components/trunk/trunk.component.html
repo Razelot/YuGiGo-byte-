@@ -55,27 +55,27 @@
   <mat-card-content>
 
     <mat-grid-list cols="12" rowHeight="30px">
-      <mat-grid-tile [colspan]="10" [rowspan]="1">
+      <mat-grid-tile [colspan]="9" [rowspan]="1">
         <mat-form-field style="width: 100%;">
           <input matInput placeholder="Search cards" name="search" [(ngModel)]="api.query" (keydown.enter)="onEnter($event)" autocomplete="off">
         </mat-form-field>
       </mat-grid-tile>
 
-      <mat-grid-tile [colspan]="2" [rowspan]="1">
-        <button class="button" mat-raised-button color="primary" (click)="searchCards()" style="width: 80%; position: absolute; right: 0;">Search</button>
+      <mat-grid-tile [colspan]="3" [rowspan]="1">
+        <button class="button" mat-raised-button color="primary" (click)="searchCards()" style="width: 80%; position: absolute; right: 0;"><i class="material-icons">search</i></button>
       </mat-grid-tile>
 
-      <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <mat-grid-tile [colspan]="navi.mobileQuery.matches ? 12 : 4" [rowspan]="2">
         <mat-slider #cardSizeSlider min="1" max="100" step="1" value="1" style="width:100%;"></mat-slider>
       </mat-grid-tile>
 
-      <mat-grid-tile [colspan]="10" [rowspan]="1">
+      <mat-grid-tile [colspan]="navi.mobileQuery.matches ? 12 : 8" [rowspan]="navi.mobileQuery.matches ? 3 : 2">
         <span style="position: absolute; right: 0;">
-          <mat-paginator [length]="api.cardCount" [pageIndex]="api.pageIndex" [pageSize]="api.pageSize" [pageSizeOptions]="api.pageSizeOptions"
-            X (page)="onPageChange($event)">
+          <mat-paginator [length]="api.cardCount" [pageIndex]="api.pageIndex" [pageSize]="api.pageSize" [pageSizeOptions]="api.pageSizeOptions" (page)="onPageChange($event)">
           </mat-paginator>
         </span>
       </mat-grid-tile>
+
     </mat-grid-list>
 
 
