@@ -29,9 +29,11 @@ export class CardService {
   pageSizeOptions = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 
   selectedCard: Card = new Card();
+  selectedCardCount: Observable<any>;
   selectedImagePath: string = "assets/card-back.jpg";
 
   selectedDeck: string;
+
 
   constructor(private http: HttpClient, private af: AngularFireDatabase) {
 
@@ -130,5 +132,10 @@ export class CardService {
     return this.af.list('decks').snapshotChanges().map(changes => {
       return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
     });
+  }
+
+  countCard(){
+    console.log('deck/' + this.selectedCard.id + '/qty');
+    this.selectedCardCount =this.af.object('deck/' + this.selectedCard.id + '/qty').valueChanges();
   }
 }

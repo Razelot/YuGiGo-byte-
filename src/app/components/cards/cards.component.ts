@@ -31,11 +31,11 @@ export class CardsComponent implements OnInit {
       this.location.replaceState("/cards/trunk");
     }
 
-    var self = this;
+    // var self = this;
 
-    window.addEventListener('resize', () => {
-      self.navi.updateCardGridCols();
-    }, true);
+    // window.addEventListener('resize', () => {
+    //   self.navi.updateCardGridCols();
+    // }, true);
 
   }
 

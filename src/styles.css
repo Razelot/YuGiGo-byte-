@@ -3,6 +3,7 @@
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import url('https://fonts.googleapis.com/css?family=Quattrocento');
 @import url('https://fonts.googleapis.com/css?family=Quattrocento+Sans');
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
 div.router-outlet {
     /* flex: 1;
     width: 100%;

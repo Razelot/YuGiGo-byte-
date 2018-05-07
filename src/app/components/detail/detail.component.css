@@ -25,6 +25,20 @@
     overflow: auto;
 }
 
+#card-stats {
+    font-family: 'Quattrocento Sans', sans-serif;
+    background: rgb(204, 204, 204);
+    border: solid #a88f58;
+    padding: 5px;
+    /* height: 250px; */
+    /* height: 30vh; */
+    overflow: auto;
+}
+
+#card-count {
+    font-family: 'Inconsolata', monospace;
+}
+
 #card-description>p {
     margin: 0;
 }

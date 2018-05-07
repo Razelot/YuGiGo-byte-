@@ -1,5 +1,4 @@
-<!-- <div style="display: flex; flex-direction: column; height: 100%"> -->
-  <mat-sidenav-container autosize>
+  <mat-sidenav-container style="display: flex; flex-direction: column; height: 100%" autosize>
     <!-- <mat-sidenav position="end" mode="side" opened style="overflow: hidden;"> -->
     <mat-sidenav [mode]="navi.mobileQuery.matches ? 'over' : 'side'" [(opened)]="navi.detail" position="end" style="overflow: hidden; background: #363636">
     <!-- <mat-sidenav position="end" mode="side" opened style="overflow: hidden; background: #363636"> -->
@@ -8,7 +7,7 @@
 
     </mat-sidenav>
     
-    <mat-sidenav-content style="height: calc(100vh - 64px); overflow: hidden; background: rgb(204, 204, 204);">
+    <mat-sidenav-content style="flex: auto; overflow: hidden; background: rgb(204, 204, 204);">
 
       <app-trunk *ngIf="navi.view == 0"></app-trunk>
 
@@ -20,4 +19,10 @@
 
   </mat-sidenav-container>
 
-<!-- </div> -->
+  <!-- <button *ngIf="!navi.mobileQuery.matches || navi.detail" mat-fab color="primary" (click)="api.removeSelected()" class="fab-add">
+    <i class="material-icons" style="color: #FFFFFF"> add </i>
+  </button>
+
+  <button *ngIf="!navi.mobileQuery.matches || navi.detail" mat-fab color="warn" (click)="api.addSelected()" class="fab-remove">
+    <i class="material-icons" style="color: #FFFFFF"> remove </i>
+  </button> -->

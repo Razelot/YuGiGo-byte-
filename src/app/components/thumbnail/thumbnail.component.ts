@@ -58,6 +58,7 @@ export class ThumbnailComponent implements OnInit {
       }
     });
     this.api.selectedImagePath = this.thumbLoad.src;
+    this.api.countCard();
     // this.imageLoad.src = this.imagePath;
     // this.imageLoad.onload = () => {
       // Check if still on same card

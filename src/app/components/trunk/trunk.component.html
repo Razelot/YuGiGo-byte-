@@ -1,94 +1,100 @@
-<mat-expansion-panel>
-  <mat-expansion-panel-header>
-    <mat-panel-title>
-      Filters
-    </mat-panel-title>
+<div style="display: flex; flex-direction: column; height: 100%">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Filters
+      </mat-panel-title>
 
-  </mat-expansion-panel-header>
+    </mat-expansion-panel-header>
 
-  <mat-panel-title> Attributes </mat-panel-title>
-  <section>
-    <mat-checkbox class="checkbox" [(ngModel)]="attributes[0]">EARTH</mat-checkbox>
-    <mat-checkbox class="checkbox" [(ngModel)]="attributes[1]">WATER</mat-checkbox>
-    <mat-checkbox class="checkbox" [(ngModel)]="attributes[2]">FIRE</mat-checkbox>
-    <mat-checkbox class="checkbox" [(ngModel)]="attributes[3]">WIND</mat-checkbox>
-    <mat-checkbox class="checkbox" [(ngModel)]="attributes[4]">LIGHT</mat-checkbox>
-    <mat-checkbox class="checkbox" [(ngModel)]="attributes[5]">DARK</mat-checkbox>
-    <mat-checkbox class="checkbox" [(ngModel)]="attributes[6]">DIVINE</mat-checkbox>
-  </section>
-  <br>
-  <mat-panel-title>Races</mat-panel-title>
-  <section>
-    <mat-checkbox class="checkbox" [(ngModel)]="races[0]">Warrior</mat-checkbox>
-    <mat-checkbox class="checkbox" [(ngModel)]="races[1]">Spellcaster</mat-checkbox>
-    <mat-checkbox class="checkbox" [(ngModel)]="races[2]">Fairy</mat-checkbox>
-    <mat-checkbox class="checkbox" [(ngModel)]="races[3]">Fiend</mat-checkbox>
-    <mat-checkbox class="checkbox" [(ngModel)]="races[4]">Zombie</mat-checkbox>
-    <mat-checkbox class="checkbox" [(ngModel)]="races[5]">Machine</mat-checkbox>
-    <mat-checkbox class="checkbox" [(ngModel)]="races[6]">Aqua</mat-checkbox>
-    <mat-checkbox class="checkbox" [(ngModel)]="races[7]">Pyro</mat-checkbox>
-    <mat-checkbox class="checkbox" [(ngModel)]="races[8]">Rock</mat-checkbox>
-    <mat-checkbox class="checkbox" [(ngModel)]="races[9]">Winged Beast</mat-checkbox>
-    <mat-checkbox class="checkbox" [(ngModel)]="races[10]">Plant</mat-checkbox>
-    <mat-checkbox class="checkbox" [(ngModel)]="races[11]">Insect</mat-checkbox>
-    <mat-checkbox class="checkbox" [(ngModel)]="races[12]">Thunder</mat-checkbox>
-    <mat-checkbox class="checkbox" [(ngModel)]="races[13]">Dragon</mat-checkbox>
-    <mat-checkbox class="checkbox" [(ngModel)]="races[14]">Beast</mat-checkbox>
-    <mat-checkbox class="checkbox" [(ngModel)]="races[15]">Beast-Warrior</mat-checkbox>
-    <mat-checkbox class="checkbox" [(ngModel)]="races[16]">Dinosaur</mat-checkbox>
-    <mat-checkbox class="checkbox" [(ngModel)]="races[17]">Fish</mat-checkbox>
-    <mat-checkbox class="checkbox" [(ngModel)]="races[18]">Sea-Serpent</mat-checkbox>
-    <mat-checkbox class="checkbox" [(ngModel)]="races[19]">Reptile</mat-checkbox>
-    <mat-checkbox class="checkbox" [(ngModel)]="races[20]">Psychic</mat-checkbox>
-    <mat-checkbox class="checkbox" [(ngModel)]="races[21]">Divine-Beast</mat-checkbox>
-    <mat-checkbox class="checkbox" [(ngModel)]="races[22]">Creator God</mat-checkbox>
-    <mat-checkbox class="checkbox" [(ngModel)]="races[23]">Wyrm</mat-checkbox>
-    <mat-checkbox class="checkbox" [(ngModel)]="races[24]">Cyberse</mat-checkbox>
-    <mat-checkbox class="checkbox" [(ngModel)]="races[25]">Yokai</mat-checkbox>
-  </section>
-  <br>
-  <button class="button" mat-raised-button color="warn" (click)="clearFilter()">Clear</button>
+    <mat-panel-title> Attributes </mat-panel-title>
+    <section>
+      <mat-checkbox class="checkbox" [(ngModel)]="attributes[0]">EARTH</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="attributes[1]">WATER</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="attributes[2]">FIRE</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="attributes[3]">WIND</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="attributes[4]">LIGHT</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="attributes[5]">DARK</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="attributes[6]">DIVINE</mat-checkbox>
+    </section>
+    <br>
+    <mat-panel-title>Races</mat-panel-title>
+    <section>
+      <mat-checkbox class="checkbox" [(ngModel)]="races[0]">Warrior</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="races[1]">Spellcaster</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="races[2]">Fairy</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="races[3]">Fiend</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="races[4]">Zombie</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="races[5]">Machine</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="races[6]">Aqua</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="races[7]">Pyro</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="races[8]">Rock</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="races[9]">Winged Beast</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="races[10]">Plant</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="races[11]">Insect</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="races[12]">Thunder</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="races[13]">Dragon</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="races[14]">Beast</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="races[15]">Beast-Warrior</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="races[16]">Dinosaur</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="races[17]">Fish</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="races[18]">Sea-Serpent</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="races[19]">Reptile</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="races[20]">Psychic</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="races[21]">Divine-Beast</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="races[22]">Creator God</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="races[23]">Wyrm</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="races[24]">Cyberse</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="races[25]">Yokai</mat-checkbox>
+    </section>
+    <br>
+    <button class="button" mat-raised-button color="warn" (click)="clearFilter()">Clear</button>
 
-</mat-expansion-panel>
+  </mat-expansion-panel>
 
-<mat-card style="padding: 10px 20px 10px 20px;">
-  <mat-card-content>
+  <mat-card style="padding: 10px 20px 10px 20px;">
+    <mat-card-content>
 
-    <mat-grid-list cols="12" rowHeight="30px">
-      <mat-grid-tile [colspan]="9" [rowspan]="1">
-        <mat-form-field style="width: 100%;">
-          <input matInput placeholder="Search cards" name="search" [(ngModel)]="api.query" (keydown.enter)="onEnter($event)" autocomplete="off">
-        </mat-form-field>
-      </mat-grid-tile>
+      <mat-grid-list cols="12" rowHeight="30px">
+        <mat-grid-tile [colspan]="9" [rowspan]="1">
+          <mat-form-field style="width: 100%;">
+            <input matInput placeholder="Search cards" name="search" [(ngModel)]="api.query" (keydown.enter)="onEnter($event)" autocomplete="off">
+          </mat-form-field>
+        </mat-grid-tile>
 
-      <mat-grid-tile [colspan]="3" [rowspan]="1">
-        <button class="button" mat-raised-button color="primary" (click)="searchCards()" style="width: 80%; position: absolute; right: 0;"><i class="material-icons">search</i></button>
-      </mat-grid-tile>
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+          <button class="button" mat-raised-button color="primary" (click)="searchCards()" style="width: 80%; position: absolute; right: 0;">
+            <i class="material-icons">search</i>
+          </button>
+        </mat-grid-tile>
 
-      <mat-grid-tile [colspan]="navi.mobileQuery.matches ? 12 : 4" [rowspan]="2">
-        <mat-slider #cardSizeSlider min="1" max="100" step="1" value="1" style="width:100%;"></mat-slider>
-      </mat-grid-tile>
+        <mat-grid-tile [colspan]="navi.mobileQuery.matches ? 12 : 4" [rowspan]="2">
+          <mat-slider #cardSizeSlider min="1" max="100" step="1" value="1" style="width:100%;"></mat-slider>
+        </mat-grid-tile>
 
-      <mat-grid-tile [colspan]="navi.mobileQuery.matches ? 12 : 8" [rowspan]="navi.mobileQuery.matches ? 3 : 2">
-        <span style="position: absolute; right: 0;">
-          <mat-paginator [length]="api.cardCount" [pageIndex]="api.pageIndex" [pageSize]="api.pageSize" [pageSizeOptions]="api.pageSizeOptions" (page)="onPageChange($event)">
-          </mat-paginator>
-        </span>
-      </mat-grid-tile>
+        <mat-grid-tile [colspan]="navi.mobileQuery.matches ? 12 : 8" [rowspan]="navi.mobileQuery.matches ? 3 : 2">
+          <span style="position: absolute; right: 0;">
+            <mat-paginator [length]="api.cardCount" [pageIndex]="api.pageIndex" [pageSize]="api.pageSize" [pageSizeOptions]="api.pageSizeOptions"
+              (page)="onPageChange($event)">
+            </mat-paginator>
+          </span>
+        </mat-grid-tile>
 
-    </mat-grid-list>
+      </mat-grid-list>
 
 
-  </mat-card-content>
-</mat-card>
+    </mat-card-content>
+  </mat-card>
 
-<div *ngIf="api.loading" id="spinner">
-  <mat-spinner></mat-spinner>
+  <div *ngIf="api.loading" id="spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <mat-grid-list *ngIf="!api.loading" id="card-grid-main" class="card-grid grid-trunk" [cols]="navi.matGridOptions.cols" [rowHeight]="navi.matGridOptions.rowHeight"
+    style="display: flex; flex-direction: column; height: 100%">
+    <mat-grid-tile *ngFor="let card of api.cardsPaged">
+      <app-thumbnail [card]="card" style="height: 100%; width: 100%;"></app-thumbnail>
+    </mat-grid-tile>
+  </mat-grid-list>
+
 </div>
-
-
-<mat-grid-list *ngIf="!api.loading" id="card-grid-main" class="card-grid grid-trunk" [cols]="navi.matGridOptions.cols" [rowHeight]="navi.matGridOptions.rowHeight">
-  <mat-grid-tile *ngFor="let card of api.cardsPaged">
-    <app-thumbnail [card]="card" style="height: 100%; width: 100%;"></app-thumbnail>
-  </mat-grid-tile>
-</mat-grid-list>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CardService } from '../../services/card.service';
+import { NavigationService } from '../../services/navigation.service';
+
 
 @Component({
   selector: 'app-detail',
@@ -8,7 +10,7 @@ import { CardService } from '../../services/card.service';
 })
 export class DetailComponent implements OnInit {
 
-  constructor(public api: CardService) { }
+  constructor(public navi: NavigationService, public api: CardService) { }
 
   ngOnInit() {
   }

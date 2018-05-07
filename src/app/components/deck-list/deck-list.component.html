@@ -1,5 +1,44 @@
-<mat-card class="deck-list" *ngFor="let deck of decks$ | async" style="padding: 10px 20px 10px 20px;" (click)="selectDeck(deck.key)">
-  <mat-card-content>
-    {{deck.key}} {{deck.name}}
-  </mat-card-content>
-</mat-card>
+<div style="padding: 3px 6px 3px 6px; display: flex; flex-direction: column; height: 100%">
+
+  <mat-card class="deck-list" *ngFor="let deck of decks$ | async" style="margin: 3px 0 3px 0; padding: 10px 20px 10px 20px;"
+    (click)="selectDeck(deck.key)">
+    <mat-card-content>
+
+
+      <mat-grid-list cols="12" rowHeight="30px">
+
+        <mat-grid-tile [colspan]="1" [rowspan]="2">
+          {{deck.key}}
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="10" [rowspan]="1">
+          <p style="text-align: left;">
+
+            {{deck.name}}
+          </p>
+        </mat-grid-tile>
+
+
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <button mat-icon-button color="warn">
+            <i class="material-icons">delete</i>
+          </button>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="11" [rowspan]="1">
+          {{deck.key}} {{deck.name}}
+        </mat-grid-tile>
+
+      </mat-grid-list>
+    </mat-card-content>
+  </mat-card>
+
+</div>
+
+
+<button mat-fab color="primary" (click)="api.removeSelected()" class="fab-add">
+  <i class="material-icons" style="color: #FFFFFF"> add </i>
+</button>
+
+<button mat-fab color="warn" (click)="api.addSelected()" class="fab-remove">
+  <i class="material-icons" style="color: #FFFFFF"> remove </i>
+</button>

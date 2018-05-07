@@ -9,7 +9,7 @@
 
 .main-div>mat-sidenav-container {
     position: relative;
-    height: calc(100% - 64px); 
+    height: calc(100% - 64px);
     width: 100%;
 }
 
